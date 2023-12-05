@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MatAlunos</title>
+</head>
+<body>
+    <script>
+        const gabarito = ['A', 'B', 'C', 'D', 'A', 'B', 'C', 'D', 'A', 'B'];
+        const notaAprovacao = 7.0;
+        const totalAlunos = 4;
+        const dadAlunos = [];
+
+        let alunosAprovados = 0;
+        let somaNotas = 0;
+
+        for (let i = 1; i <= totalAlunos; i++) {
+        let matricula = prompt(`Informe a matrícula do aluno ${i}:`);
+
+    
+        let respostasAluno = [];
+        for (let j = 0; j < 3; j++) {
+            let resposta = prompt(`Informe a resposta da questão ${j + 1} para o aluno ${i}:`);
+            respostasAluno.push(resposta.toUpperCase());
+        
+            dadAlunos.push([matricula,respostasAluno])
+        }
+
+        let nota = 0;
+        for (let i = 0; i < 3; i++) {
+            if (respostasAluno[i] === gabarito[i]) {
+                nota++;
+            }
+        }
+
+        let resultado = nota >= notaAprovacao ? 'Aprovado' : 'Reprovado';
+
+        document.write(`Matrícula: ${matricula}, Nota: ${nota}, Resultado: ${resultado} <br>`);
+
+        somaNotas += nota;
+        if (nota >= notaAprovacao) {
+            alunosAprovados++;
+            }
+        }
+
+        const mediaTurma = somaNotas / totalAlunos;
+        document.write(`\n Quantidade de Alunos Aprovados: ${alunosAprovados} <br>`);
+        document.write(`Média da Turma: ${mediaTurma.toFixed(2)}`);
+
+    </script>
+</body>
+</html>

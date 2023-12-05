@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>matProf</title>
+</head>
+<body>
+    <script>
+        const professores = [];
+
+    function cadastrarProfessor() {
+        const nome = prompt("Informe o nome do professor:");
+        const turno = prompt("Informe o turno do professor (matutino, vespertino ou noturno):");
+        const disciplinas = [];
+
+    for (let i = 1; i <= 7; i++) {
+        const disciplina = prompt(`Informe a disciplina ${i} que o professor pode ministrar:`);
+        disciplinas.push(disciplina);
+    }
+
+    professores.push([nome, turno, disciplinas]);
+
+    alert("Professor cadastrado com sucesso!");
+}
+    function consultarProfessor() {
+      const disciplinaConsulta = prompt("Informe a disciplina desejada:");
+      const turnoConsulta = prompt("Informe o turno desejado (matutino, vespertino ou noturno):");
+
+     
+      const professoresDisponiveis = professores.filter(professor => {
+        const [nome, turno, disciplinas] = professor;
+        return disciplinas.includes(disciplinaConsulta) && turno === turnoConsulta;
+      });
+
+      
+      if (professoresDisponiveis.length > 0) {
+        document.write(`Professores disponíveis para ministrar ${disciplinaConsulta} no turno ${turnoConsulta}:`);
+        professoresDisponiveis.forEach(professor => {
+          const [nome] = professor;
+          document.write(`- ${nome}`);
+        });
+      } else {
+        document.write(`Nenhum professor disponível para ministrar ${disciplinaConsulta} no turno ${turnoConsulta}.`);
+      }
+    }
+
+
+    cadastrarProfessor();
+    cadastrarProfessor();
+    consultarProfessor();
+    </script>
+</body>
+</html>

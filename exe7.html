@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>População de Cidades</title>
+</head>
+<body>
+
+  <h2>População de Cidades</h2>
+
+  <script>
+    function calcularEstatisticas() {
+      let maioresPopulacoes = [];
+      let menoresPopulacoes = [];
+      let mediasPopulacoes = [];
+
+      for (let estado = 1; estado <= 3; estado++) {
+        let maiorPopulacaoEstado = 0;
+        let menorPopulacaoEstado = 0;
+        let somaPopulacaoEstado = 0;
+
+        for (let cidade = 1; cidade <= 5; cidade++) {
+          const populacao = parseInt(prompt(`Informe a população da cidade ${cidade} no estado ${estado}:`), 10);
+
+          
+          if (populacao > maiorPopulacaoEstado) {
+            maiorPopulacaoEstado = populacao;
+          }
+          if (populacao < menorPopulacaoEstado) {
+            menorPopulacaoEstado = populacao;
+          }
+          somaPopulacaoEstado += populacao;
+        }
+
+        
+        const mediaPopulacaoEstado = somaPopulacaoEstado / 5;
+
+        
+        maioresPopulacoes.push(maiorPopulacaoEstado);
+        menoresPopulacoes.push(menorPopulacaoEstado);
+        mediasPopulacoes.push(mediaPopulacaoEstado);
+      }
+
+      for (let i = 0; i < 3; i++) {
+        document.write(`Estado ${i + 1}: Maior População ${maioresPopulacoes[i]}, Menor População ${menoresPopulacoes[i]}, Média ${mediasPopulacoes[i].toFixed(2)}`);
+      }
+    }
+
+    calcularEstatisticas()
+  </script>
+
+</body>
+</html>
+

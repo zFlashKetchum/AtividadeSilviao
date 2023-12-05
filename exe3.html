@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const alunos = [
+            [],
+            [],
+            []
+        ];
+
+        let matricula;
+        let nota;
+        let freq;
+        let index = 0;
+        let resposta = parseInt(prompt("Você deseja cadastrar um aluno? \n [ 0 ] - Não \n [ 1 ] - Sim"));
+        
+        while(resposta == 1) {
+            
+            matricula = parseInt(prompt("Digite a matricula do Aluno"));
+            nota = parseInt(prompt("Digite a nota do Aluno"));
+            freq = parseInt(prompt("Digite a frequência do Aluno"));
+            alunos[index++].push(matricula, nota, freq);
+
+            resposta = parseInt(prompt("Você deseja cadastrar um aluno? \n [ 0 ] - Não \n [ 1 ] - Sim"));
+        }
+
+        let medSala = parseInt(0);
+        let alLidos = parseInt(0);
+        let freqTot = parseInt(0);
+        
+        for(var i = 0; i < alunos.length; i++) {
+        medSala += alunos[i][1];
+        alLidos += alunos[i][0];
+        freqTot += alunos[i][2];
+        };
+
+        let mediaTot = medSala / alunos.length;
+        let alTot = alLidos / alunos.length;
+        let freqTotal = freqTot / alunos.length;
+
+        document.write(`A média da sala foi ${mediaTot} , foram lidos ${alTot} alunos e a frequêcia da turama foi ${freqTotal}`)
+
+    </script>
+</body>
+</html>
